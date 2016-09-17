@@ -2,7 +2,7 @@
 import Primus from '../../primus.gen';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-export const settings = window.location.hostname === 'idle.land' ?
+export const settings = window.location.hostname === 'global.idle.land' ?
   { port: 80,   protocol: 'http', hostname: 'game.idle.land', cdn: 'd24x6kjuc2wq9m.cloudfront.net' } :
   { port: 8080, protocol: 'http', hostname: window.location.hostname };
 
