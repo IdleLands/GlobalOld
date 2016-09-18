@@ -35,7 +35,6 @@ export class PetsComponent {
 
   setAllPlayers(data) {
     this.allPlayers = data;
-    console.log(data);
     this._applySortAndFilter();
   }
 
