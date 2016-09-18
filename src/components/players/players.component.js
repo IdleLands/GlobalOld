@@ -60,7 +60,9 @@ export class PlayersComponent {
         if(!this.userFilter || !this.userFilterCriteria) return true;
         return _.includes((''+player[this.userFilter]).toLowerCase(), this.userFilterCriteria.toLowerCase());
       })
-      .sortBy(this.userSort)
+      .sortBy(player => {
+        return (''+player[this.userSort]).toLowerCase();
+      })
       .value();
 
     if(this.userReverse) baseVal = _.reverse(baseVal);
