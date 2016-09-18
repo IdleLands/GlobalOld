@@ -13,12 +13,14 @@ export class PrimusWrapper {
 
     this._contentUpdates = {
       onlineUsers: new BehaviorSubject([]),
-      maps:        new BehaviorSubject([])
+      maps:        new BehaviorSubject([]),
+      pets:        new BehaviorSubject([])
     };
 
     this.contentUpdates = {
       onlineUsers: this._contentUpdates.onlineUsers.asObservable(),
-      maps:        this._contentUpdates.maps.asObservable()
+      maps:        this._contentUpdates.maps.asObservable(),
+      pets:        this._contentUpdates.pets.asObservable()
     };
   }
 
@@ -63,6 +65,10 @@ export class PrimusWrapper {
 
   requestGlobalPlayers() {
     this.emit('plugin:global:allplayers');
+  }
+
+  requestGlobalPets() {
+    this.emit('plugin:global:allpets');
   }
 
   requestGlobalMaps() {

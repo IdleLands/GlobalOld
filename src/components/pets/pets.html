@@ -1,0 +1,78 @@
+
+<div class="container-fluid pets-container">
+
+  <div class="row" *ngIf="!allPlayers.length">
+    <div class="col-md-12 empty-text text-md-center text-muted">
+      <h3>No pets available.</h3>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="allPlayers.length">
+
+    <div class="col-md-2 sidebar">
+      <div>Sort By</div>
+      <div>
+        <select class="form-control" (change)="changeSort($event)">
+          <option
+            [value]="opt.value"
+            [selected]="opt.value === userSort"
+            *ngFor="let opt of filterKeys">
+            {{ opt.name }}
+          </option>
+        </select>
+      </div>
+
+      <br>
+
+      <div>Filter By</div>
+      <div>
+        <select class="form-control" (change)="changeFilter($event)">
+          <option value="">No filter</option>
+          <option
+            [value]="opt.value"
+            [selected]="opt.value === userFilter"
+            *ngFor="let opt of filterKeys">
+            {{ opt.name }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <input type="text" class="form-control" placeholder="Filter..." [(ngModel)]="userFilterCriteria" (keyup)="_applySortAndFilter()" />
+      </div>
+
+      <br>
+
+      <div>
+        <label>
+          <input type="checkbox" [checked]="userReverse" (change)="changeReverse()" />
+          <span>Reverse</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="col-md-10 pet-list">
+      <div class="row">
+
+        <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let player of allPlayersDisplay">
+          <div class="card">
+            <div class="card-block">
+              <h4 class="card-title">
+                {{ player.name }}
+                <button class="pull-xs-right btn btn-sm btn-outline-primary">
+                  <i fa icon="arrow-right"></i>
+                </button>
+              </h4>
+              <p class="card-text">
+                Level {{ player.level }} {{ player.professionName }}<br>
+                Owned by {{ player.owner }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
