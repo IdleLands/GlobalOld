@@ -1,0 +1,28 @@
+
+<div class="container-fluid player-container">
+
+  <div class="row" *ngIf="!player.overview">
+    <div class="col-md-12 empty-text text-md-center text-muted">
+      <h3>Player not online.</h3>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="player.overview">
+    <div class="col-md-2 sidebar">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="nav-item" *ngFor="let nav of navItems">
+          <a class="nav-link" [class.active]="nav.value === activeNav" (click)="changeNav(nav.value)">{{ nav.name }}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-10" *ngIf="player.overview">
+      <overview     *ngIf="activeNav === 'overview'"      [player]="player.overview"></overview>
+      <equipment    *ngIf="activeNav === 'equipment'"     [player]="player.equipment"></equipment>
+      <achievements *ngIf="activeNav === 'achievements'"  [player]="player.achievements"></achievements>
+      <collectibles *ngIf="activeNav === 'collectibles'"  [player]="player.collectibles"></collectibles>
+      <statistics   *ngIf="activeNav === 'statistics'"    [player]="player.statistics"></statistics>
+    </div>
+  </div>
+
+</div>

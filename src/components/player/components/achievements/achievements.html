@@ -1,0 +1,18 @@
+<div class="row">
+
+  <div class="col-md-4" *ngFor="let achievement of achievements">
+
+    <div class="card achievement-card">
+      <div class="card-block">
+        <h4 class="card-title">
+          <stat [name]="player[achievement].type"></stat> {{ achievement }}<span *ngIf="player[achievement].tier > 1"> (tier {{player[achievement].tier}})</span>
+        </h4>
+
+        <p>{{ player[achievement].desc }}</p>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

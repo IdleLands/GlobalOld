@@ -13,12 +13,14 @@ export class PrimusWrapper {
 
     this._contentUpdates = {
       onlineUsers: new BehaviorSubject([]),
-      maps:        new BehaviorSubject([]),
+      player:      new BehaviorSubject({}),
+      maps:        new BehaviorSubject({}),
       pets:        new BehaviorSubject([])
     };
 
     this.contentUpdates = {
       onlineUsers: this._contentUpdates.onlineUsers.asObservable(),
+      player:      this._contentUpdates.player.asObservable(),
       maps:        this._contentUpdates.maps.asObservable(),
       pets:        this._contentUpdates.pets.asObservable()
     };
@@ -61,6 +63,10 @@ export class PrimusWrapper {
   emit(event, data, callback) {
     this.outstandingCallbacks[event] = callback;
     this.socket.emit(event, data);
+  }
+
+  requestPlayer(playerName) {
+    this.emit('plugin:global:player', { playerName });
   }
 
   requestGlobalPlayers() {

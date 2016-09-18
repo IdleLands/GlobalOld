@@ -1,0 +1,20 @@
+<div class="row">
+
+  <div class="col-md-4" *ngFor="let collectible of collectibles">
+
+    <div class="card collectible-card">
+      <div class="card-block">
+        <h5 class="card-title class-{{player[collectible].rarity}}">
+          {{ collectible }}
+        </h5>
+
+        <p>{{ player[collectible].storyline }}</p>
+        <p>{{ player[collectible].map }} - {{ player[collectible].region }}</p>
+        <p>{{ player[collectible].description }}</p>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
