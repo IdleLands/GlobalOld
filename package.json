@@ -5,7 +5,7 @@
   "repository": "https://github.com/IdleLands/Global",
   "license": "MIT",
   "scripts": {
-    "build:app": "webpack -p --progress && cp src/index.html dist/index.html && echo '/*    /index.html   200' > dist/_redirects && echo 'global.idle.land' > dist/CNAME && echo `date` > dist/builtat",
+    "build:app": "webpack -p --progress && cp src/index.html dist/index.html && echo '/*    /index.html   200' > dist/_redirects && echo `date` > dist/builtat",
     "test:lint": "eslint \"src/**/*.js\"",
     "test:ava": "ava --require babel-register",
     "test": "npm run test:lint",
