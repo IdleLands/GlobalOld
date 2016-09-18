@@ -12,11 +12,13 @@ export class PrimusWrapper {
     this.outstandingCallbacks = {};
 
     this._contentUpdates = {
-      onlineUsers: new BehaviorSubject([])
+      onlineUsers: new BehaviorSubject([]),
+      maps:        new BehaviorSubject([])
     };
 
     this.contentUpdates = {
-      onlineUsers: this._contentUpdates.onlineUsers.asObservable()
+      onlineUsers: this._contentUpdates.onlineUsers.asObservable(),
+      maps:        this._contentUpdates.maps.asObservable()
     };
   }
 
@@ -61,6 +63,10 @@ export class PrimusWrapper {
 
   requestGlobalPlayers() {
     this.emit('plugin:global:allplayers');
+  }
+
+  requestGlobalMaps() {
+    this.emit('plugin:global:allmaps');
   }
 
 }

@@ -1,8 +1,23 @@
 
-<div class="container">
+<div class="container-fluid map-container">
 
-  <div class="row">
-    test 2
+  <div class="row" *ngIf="!allMaps.length">
+    <div class="col-md-12 empty-text text-md-center text-muted">
+      <h3>No maps available.</h3>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="allMaps.length">
+    <div class="col-md-3">
+      <ul class="nav nav-pills nav-stacked map-nav">
+        <li class="nav-item" *ngFor="let map of allMaps">
+          <a class="nav-link" [class.active]="map === activeMap" (click)="changeMap(map.name)">{{ map.name }}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-9 map-container" pannable-map [activeMap]="activeMap" [x]="_x" [y]="_y" (onPan)="changeCoords($event)" *ngIf="isReady"></div>
+
   </div>
 
 </div>
