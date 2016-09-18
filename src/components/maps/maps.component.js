@@ -50,9 +50,7 @@ export class MapsComponent {
 
     this._x = _.isNaN(x) ? 0 : x;
     this._y = _.isNaN(y) ? 0 : y;
-
-    console.log(x, y, mapName);
-
+    
     this.router.navigate(['/maps'], { queryParams: { map: mapName, x, y } });
   }
 
