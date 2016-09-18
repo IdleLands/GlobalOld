@@ -9,7 +9,7 @@
 
   <div class="row" *ngIf="allPlayers.length">
 
-    <div class="col-md-2">
+    <div class="col-md-2 sidebar">
       <div>Sort By</div>
       <div>
         <select class="form-control" (change)="changeSort($event)">
@@ -50,7 +50,7 @@
       </div>
     </div>
 
-    <div class="col-md-10">
+    <div class="col-md-10 player-list">
       <div class="row">
 
         <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let player of allPlayersDisplay">
