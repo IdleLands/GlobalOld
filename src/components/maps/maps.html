@@ -1,5 +1,5 @@
 
-<div class="container-fluid map-container">
+<div class="container-fluid maps-container">
 
   <div class="row" *ngIf="!allMaps.length">
     <div class="col-md-12 empty-text text-md-center text-muted">
@@ -8,7 +8,7 @@
   </div>
 
   <div class="row" *ngIf="allMaps.length">
-    <div class="col-md-3">
+    <div class="col-md-3 sidebar">
       <ul class="nav nav-pills nav-stacked map-nav">
         <li class="nav-item" *ngFor="let map of allMaps">
           <a class="nav-link" [class.active]="map === activeMap" (click)="changeMap(map.name)">{{ map.name }}</a>

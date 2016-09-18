@@ -237,7 +237,7 @@ export class PannableMap {
           startY: this.y,
           onPan: (data) => this.onPan.emit(data)
         });
-        this.game = new window.Phaser.Game('90%', window.innerHeight - 54, window.Phaser.CANVAS, 'map', this._gameObj);
+        this.game = new window.Phaser.Game(window.innerWidth * 0.75, window.innerHeight - 54, window.Phaser.CANVAS, 'map', this._gameObj);
         this._gameObj.game = this.game;
       });
     } else {
