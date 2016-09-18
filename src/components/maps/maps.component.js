@@ -28,7 +28,7 @@ export class MapsComponent {
     this._current = {};
   }
 
-  changeMap(newMapName, isLoad = false) {
+  changeMap(newMapName = 'Norkos', isLoad = false) {
     this.activeMap = _.find(this.allMaps, { name: newMapName });
     const opts = { mapName: newMapName };
     if(!isLoad) {
@@ -48,8 +48,10 @@ export class MapsComponent {
     if(!_.isNumber(x)) x = this._current.x || this.default.x;
     if(!_.isNumber(y)) y = this._current.y || this.default.y;
 
-    this._x = x;
-    this._y = y;
+    this._x = _.isNaN(x) ? 0 : x;
+    this._y = _.isNaN(y) ? 0 : y;
+
+    console.log(x, y, mapName);
 
     this.router.navigate(['/maps'], { queryParams: { map: mapName, x, y } });
   }
@@ -72,13 +74,16 @@ export class MapsComponent {
       map: decodeURI(map)
     };
 
+    if(_.isNaN(this.default.x))                               this.default.x = 0;
+    if(_.isNaN(this.default.y))                               this.default.y = 0;
+    if(!this.default.map || this.default.map === 'undefined') this.default.map = 'Norkos';
+
     this.primus.initSocket();
     this.primus.requestGlobalMaps();
   }
 
   ngOnDestroy() {
     this.mapSubscription.unsubscribe();
-    this.routeSubscription.unsubscribe();
 
     this.primus.killSocket();
   }
