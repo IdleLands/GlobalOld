@@ -38,8 +38,22 @@ export class MapsComponent {
   }
 
   changeCoords({ x, y }) {
+    if(this._blockNextPan) {
+      this._blockNextPan = false;
+      return;
+    }
     this._current = { x, y };
     this._change(this._current);
+  }
+
+  onMapChange({ x, y, map }) {
+    this.activeMap = _.find(this.allMaps, { name: map });
+    this._x = x;
+    this._y = y;
+    this._current = { x, y };
+
+    this._blockNextPan = true;
+    this._change({ mapName: map, x, y });
   }
 
   _change({ mapName, x, y }) {
@@ -50,13 +64,16 @@ export class MapsComponent {
 
     this._x = _.isNaN(x) ? 0 : x;
     this._y = _.isNaN(y) ? 0 : y;
-    
+
+    console.log(mapName, x, y, new Error().stack);
+
     this.router.navigate(['/maps'], { queryParams: { map: mapName, x, y } });
   }
 
   setAllMaps(data) {
-    if(!data.length) return;
-    this.allMaps = data;
+    if(!data.maps || !data.teleports) return;
+    this.allMaps = data.maps;
+    this.allTeleports = data.teleports;
     this.changeMap(this.default.map || 'Norkos', true);
 
     this.isReady = true;

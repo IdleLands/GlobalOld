@@ -16,7 +16,15 @@
       </ul>
     </div>
 
-    <div class="col-md-9 map-container" pannable-map [activeMap]="activeMap" [x]="_x" [y]="_y" (onPan)="changeCoords($event)" *ngIf="isReady"></div>
+    <div class="col-md-9 map-container"
+         pannable-map
+         [activeMap]="activeMap"
+         [teleports]="allTelports"
+         [x]="_x"
+         [y]="_y"
+         (onPan)="changeCoords($event)"
+         (onMapChange)="onMapChange($event)"
+         *ngIf="isReady"></div>
 
   </div>
 

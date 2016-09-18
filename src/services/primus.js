@@ -13,7 +13,7 @@ export class PrimusWrapper {
 
     this._contentUpdates = {
       onlineUsers: new BehaviorSubject([]),
-      maps:        new BehaviorSubject([])
+      maps:        new BehaviorSubject({})
     };
 
     this.contentUpdates = {

@@ -13,12 +13,14 @@ const baseUrl = `${settings.protocol}://${settings.cdn ? settings.cdn : settings
 
 class Game {
 
-  constructor({ mapName, mapPath, onPan, startX, startY }) {
+  constructor({ mapName, mapPath, onPan, onMapChange, startX, startY, teleports }) {
     this.mapName = mapName;
     this.mapPath = mapPath;
     this.onPan = onPan;
+    this.onMapChange = onMapChange;
     this.startX = startX;
     this.startY = startY;
+    this.teleports = teleports;
 
     this.itemText = '';
 
@@ -141,6 +143,27 @@ class Game {
       });
 
       child.events.onInputOut.add(() => this.itemText = '');
+
+      child.events.onInputDown.add(() => {
+        let x = 0;
+        let y = 0;
+        let map = null;
+
+        if(child.teleportLocation) {
+          const loc = this.teleports[child.teleportLocation];
+          x = loc.x;
+          y = loc.y;
+          map = loc.map;
+        } else if(child.teleportMap) {
+          x = child.teleportX;
+          y = child.teleportY;
+          map = child.teleportMap;
+        } else {
+          return;
+        }
+
+        this.onMapChange({ x, y, map });
+      });
     });
 
   }
@@ -199,18 +222,27 @@ class Game {
     this.updateCamera();
 
     if(this.game.input.mousePointer.isDown) {
-      this.onPan({
-        x: Math.floor((this.game.camera.view.x+this.game.input.x) / 16),
-        y: Math.floor((this.game.camera.view.y+this.game.input.y) / 16)
-      });
+      const x = Math.floor((this.game.camera.view.x+this.game.input.x) / 16);
+      const y = Math.floor((this.game.camera.view.y+this.game.input.y) / 16);
+
+      if(x !== this._prevX || y !== this._prevY) {
+        this._prevX = x;
+        this._prevY = y;
+
+        console.log('onpan');
+        this.onPan({
+          x,
+          y
+        });
+      }
     }
   }
 }
 
 @Component({
   selector: '[pannable-map]',
-  inputs: ['activeMap', 'x', 'y'],
-  outputs: ['onPan'],
+  inputs: ['activeMap', 'x', 'y', 'teleports'],
+  outputs: ['onPan', 'onMapChange'],
   template: '<div id="map">'
 })
 export class PannableMap {
@@ -222,6 +254,7 @@ export class PannableMap {
   constructor(ngZone) {
     this.ngZone = ngZone;
     this.onPan = new EventEmitter();
+    this.onMapChange = new EventEmitter();
   }
 
   loadMap() {
@@ -236,7 +269,9 @@ export class PannableMap {
           mapPath: this.mapPath,
           startX: this.x,
           startY: this.y,
-          onPan: (data) => this.onPan.emit(data)
+          teleports: this.teleports,
+          onPan: (data) => this.onPan.emit(data),
+          onMapChange: (data) => this.onMapChange.emit(data)
         });
         this.game = new window.Phaser.Game(window.innerWidth * 0.75, window.innerHeight - 54, window.Phaser.CANVAS, 'map', this._gameObj);
         this._gameObj.game = this.game;
@@ -253,6 +288,7 @@ export class PannableMap {
   }
 
   ngOnChanges(changes) {
+    console.log('change fired');
     if(!changes.activeMap || !changes.activeMap.currentValue || _.isEqual(changes.activeMap.currentValue, changes.activeMap.previousValue)) return;
     const { name, path } = changes.activeMap.currentValue;
     this.mapName = name;
@@ -262,6 +298,8 @@ export class PannableMap {
       this._gameObj._currentMapName = name;
       this._gameObj.mapPath = path;
     }
+
+    console.log(this.mapName, this.mapPath);
 
   }
 
