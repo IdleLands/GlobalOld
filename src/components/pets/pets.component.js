@@ -30,6 +30,7 @@ export class PetsComponent {
       { name: 'Level',      value: 'level' },
       { name: 'Profession', value: 'professionName' },
       { name: 'Map',        value: 'map' },
+      { name: 'Owner',      value: 'owner' },
       { name: 'Type',       value: 'type' }
     ];
   }
