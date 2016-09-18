@@ -186,12 +186,12 @@ class Game {
 
   update() {
     if(this._currentMapName !== this.mapName) {
+      this.mapName = this._currentMapName;
+
       this.game.state.restart();
       // this.createMap();
       this.itemText = '';
     }
-
-    this._currentMapName = this.mapName;
 
     this.text.text = this.hoverText();
 
