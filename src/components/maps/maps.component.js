@@ -55,8 +55,8 @@ export class MapsComponent {
   }
 
   setAllMaps(data) {
-    if(!data.length) return;
-    this.allMaps = data;
+    if(!data.maps) return;
+    this.allMaps = data.maps;
     this.changeMap(this.default.map || 'Norkos', true);
 
     this.isReady = true;
