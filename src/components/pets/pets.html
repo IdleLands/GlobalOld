@@ -58,7 +58,7 @@
             <div class="card-block">
               <h4 class="card-title">
                 {{ player.name }}
-                <button class="pull-xs-right btn btn-sm btn-outline-primary">
+                <button class="pull-xs-right btn btn-sm btn-outline-primary" [routerLink]="['/pets', player.owner]">
                   <i fa icon="arrow-right"></i>
                 </button>
               </h4>

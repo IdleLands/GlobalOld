@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="card">
+      <div class="card-block text-md-center">
+        <h4 class="card-title">
+          {{ player.name }}
+        </h4>
+
+        <p>Level {{ player._level.__current }} {{ player.gender }} {{ player.professionName }} with {{ player.attr }}</p>
+        <p>Owned by {{ player.owner }}</p>
+        <p>Has {{ player.gold.__current }} gold</p>
+        <p>Adopted {{ player.createdAt | date:'medium' }}</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-2">
+
+    <div class="card">
+      <div class="card-block text-md-center">
+        <h4 class="card-title">
+          HP
+        </h4>
+
+        <p>{{ player._hp.maximum }}</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-2">
+
+    <div class="card">
+      <div class="card-block text-md-center">
+        <h4 class="card-title">
+          MP
+        </h4>
+
+        <p>{{ player._mp.maximum }}</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-4"></div>
+</div>
+
+<div class="row">
+  <div class="col-md-2" *ngFor="let stat of baseStats">
+
+    <div class="card">
+      <div class="card-block text-md-center">
+        <h4 class="card-title">
+          {{ stat.toUpperCase() }}
+        </h4>
+
+        <p>{{ player.statCache[stat] }}</p>
+      </div>
+    </div>
+
+  </div>
+</div>

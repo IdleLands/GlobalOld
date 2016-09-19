@@ -1,0 +1,33 @@
+
+<div class="container-fluid pet-container">
+
+  <div class="row" *ngIf="!player.name">
+    <div class="col-md-12 empty-text text-md-center text-muted">
+      <h3>Pet not online.</h3>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="player.name">
+    <div class="col-md-2 sidebar">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="nav-item" *ngFor="let nav of navItems">
+          <a class="nav-link" [class.active]="nav.value === activeNav" (click)="changeNav(nav.value)">{{ nav.name }}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">
+            <span>Owner</span>
+            <button class="pull-xs-right btn btn-sm btn-outline-primary" [routerLink]="['/players', player.owner]">
+              <i fa icon="arrow-right"></i>
+            </button>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-10" *ngIf="player.name">
+      <overview     *ngIf="activeNav === 'overview'"      [player]="player"></overview>
+      <equipment    *ngIf="activeNav === 'equipment'"     [player]="equipment"></equipment>
+    </div>
+  </div>
+
+</div>

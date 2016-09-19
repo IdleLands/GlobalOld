@@ -12,7 +12,7 @@
       <div class="card-block">
         <h4 class="card-title">
           {{ player.allPets[pet].name }}
-          <button class="pull-xs-right btn btn-sm btn-outline-primary" *ngIf="activePetId === pet">
+          <button class="pull-xs-right btn btn-sm btn-outline-primary" *ngIf="activePetId === pet" [routerLink]="['/pets', player.allPets[pet].owner]">
             <i fa icon="arrow-right"></i>
           </button>
         </h4>
