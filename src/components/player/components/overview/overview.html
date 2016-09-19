@@ -4,7 +4,7 @@
     <div class="card">
       <div class="card-block text-md-center">
         <h4 class="card-title">
-          {{ player.name }}<span *ngIf="player.title">, the {{ player.title }}</span>
+          {{ player.nameEdit || player.name }}<span *ngIf="player.title">, the {{ player.title }}</span>
         </h4>
 
         <p>Level {{ player._level.__current }} {{ player.gender }} {{ player.professionName }} currently located in {{ player.map }} ({{ player.mapRegion }})</p>

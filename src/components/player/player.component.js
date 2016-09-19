@@ -13,9 +13,10 @@ import { EquipmentComponent } from './components/equipment/equipment.component';
 import { AchievementsComponent } from './components/achievements/achievements.component';
 import { CollectiblesComponent } from './components/collectibles/collectibles.component';
 import { StatisticsComponent } from './components/statistics/statistics.component';
+import { PetsComponent } from './components/pets/pets.component';
 
 @Component({
-  directives: [ROUTER_DIRECTIVES, OverviewComponent, EquipmentComponent, AchievementsComponent, CollectiblesComponent, StatisticsComponent],
+  directives: [ROUTER_DIRECTIVES, OverviewComponent, EquipmentComponent, AchievementsComponent, CollectiblesComponent, StatisticsComponent, PetsComponent],
   providers: [PrimusWrapper],
   template
 })
@@ -34,7 +35,8 @@ export class PlayerComponent {
       { name: 'Equipment',    value: 'equipment' },
       { name: 'Achievements', value: 'achievements' },
       { name: 'Collectibles', value: 'collectibles' },
-      { name: 'Statistics',   value: 'statistics' }
+      { name: 'Statistics',   value: 'statistics' },
+      { name: 'Pets',         value: 'pets' }
     ];
 
     this.changeNav('overview');

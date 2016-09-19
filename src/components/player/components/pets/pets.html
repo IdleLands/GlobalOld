@@ -1,0 +1,27 @@
+
+<div class="row" *ngIf="!pets.length">
+  <div class="col-md-12 empty-text text-md-center text-muted">
+    <h3>No pets.</h3>
+  </div>
+</div>
+
+<div class="row" *ngIf="pets.length">
+
+  <div class="col-md-3" *ngFor="let pet of pets">
+    <div class="card pet-card">
+      <div class="card-block">
+        <h4 class="card-title">
+          {{ player.allPets[pet].name }}
+          <button class="pull-xs-right btn btn-sm btn-outline-primary" *ngIf="activePetId === pet">
+            <i fa icon="arrow-right"></i>
+          </button>
+        </h4>
+        <p class="card-text">
+          Level {{ player.allPets[pet]._level.__current }} {{ player.allPets[pet].professionName }} {{ pet }}<br>
+        </p>
+        <p>with {{ player.allPets[pet].attr }}</p>
+      </div>
+    </div>
+  </div>
+
+</div>

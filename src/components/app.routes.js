@@ -10,6 +10,7 @@ export const routes = [
   { path: 'players',          component: PlayersComponent },
   { path: 'players/:name',    component: PlayerComponent },
   { path: 'pets',             component: PetsComponent },
+  // { path: 'pets/:name',       component: PetsComponent },
   { path: 'maps',             component: MapsComponent }
 ];
 
