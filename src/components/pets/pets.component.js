@@ -63,7 +63,7 @@ export class PetsComponent {
         return _.includes((''+player[this.userFilter]).toLowerCase(), this.userFilterCriteria.toLowerCase());
       })
       .sortBy(player => {
-        return (''+player[this.userSort]).toLowerCase();
+        return _.isNumber(player[this.userSort]) ? player[this.userSort] : player[this.userSort].toLowerCase();
       })
       .value();
 
