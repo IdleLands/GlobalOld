@@ -58,9 +58,9 @@
             <div class="card-block">
               <h4 class="card-title">
                 {{ player.nameEdit || player.name }}
-                <button class="pull-xs-right btn btn-sm btn-outline-primary" [routerLink]="['/players', player.name]">
+                <a class="pull-xs-right btn btn-sm btn-outline-primary" [routerLink]="['/players', player.name]">
                   <i fa icon="arrow-right"></i>
-                </button>
+                </a>
               </h4>
               <p class="card-text">
                 Level {{ player.level }} {{ player.professionName }}<br>

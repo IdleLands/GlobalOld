@@ -58,9 +58,9 @@
             <div class="card-block">
               <h4 class="card-title">
                 {{ player.name }}
-                <button class="pull-xs-right btn btn-sm btn-outline-primary" [routerLink]="['/pets', player.owner]">
+                <a class="pull-xs-right btn btn-sm btn-outline-primary" [routerLink]="['/pets', player.owner]">
                   <i fa icon="arrow-right"></i>
-                </button>
+                </a>
               </h4>
               <p class="card-text">
                 Level {{ player.level }} {{ player.professionName }} {{ player.type }}<br>
