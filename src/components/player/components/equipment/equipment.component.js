@@ -14,6 +14,6 @@ import { ItemComponent } from '../../../_shared/item/item.component';
 })
 export class EquipmentComponent {
   ngOnInit() {
-    this.slots = _.keys(this.player);
+    this.slots = _.sortBy(_.keys(this.player));
   }
 }
