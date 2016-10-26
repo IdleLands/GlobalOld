@@ -16,7 +16,7 @@
       </ul>
     </div>
 
-    <div class="col-md-10" *ngIf="player.overview">
+    <div class="col-md-10 offset-md-2" *ngIf="player.overview">
       <overview     *ngIf="activeNav === 'overview'"      [player]="player.overview"></overview>
       <equipment    *ngIf="activeNav === 'equipment'"     [player]="player.equipment"></equipment>
       <achievements *ngIf="activeNav === 'achievements'"  [player]="player.achievements"></achievements>

@@ -24,7 +24,7 @@
       </ul>
     </div>
 
-    <div class="col-md-10" *ngIf="player.name">
+    <div class="col-md-10 offset-md-2" *ngIf="player.name">
       <overview     *ngIf="activeNav === 'overview'"      [player]="player"></overview>
       <equipment    *ngIf="activeNav === 'equipment'"     [player]="equipment"></equipment>
     </div>
