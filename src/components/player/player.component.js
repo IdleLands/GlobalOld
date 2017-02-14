@@ -6,7 +6,7 @@ import template from './player.html';
 import './player.less';
 import { ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
 
-import { PrimusWrapper } from '../../services/primus';
+import { PlayerService } from '../../services/player.service';
 
 import { OverviewComponent } from './components/overview/overview.component';
 import { EquipmentComponent } from './components/equipment/equipment.component';
@@ -17,16 +17,16 @@ import { PetsComponent } from './components/pets/pets.component';
 
 @Component({
   directives: [ROUTER_DIRECTIVES, OverviewComponent, EquipmentComponent, AchievementsComponent, CollectiblesComponent, StatisticsComponent, PetsComponent],
-  providers: [PrimusWrapper],
+  providers: [PlayerService],
   template
 })
 export class PlayerComponent {
   static get parameters() {
-    return [[PrimusWrapper], [ActivatedRoute]];
+    return [[PlayerService], [ActivatedRoute]];
   }
 
-  constructor(primus, route) {
-    this.primus = primus;
+  constructor(playerService, route) {
+    this.playerService = playerService;
     this.route = route;
     this.player = {};
 
@@ -51,17 +51,13 @@ export class PlayerComponent {
   }
 
   ngOnInit() {
-    this.playerSubscription = this.primus.contentUpdates.player.subscribe(data => this.setPlayer(data));
-
     this.route.params.subscribe(params => {
-      this.primus.initSocket();
-      this.primus.requestPlayer(decodeURI(params.name));
+      this.playerService.getPlayer(decodeURI(params.name))
+        .subscribe(player => {
+          console.log(player);
+          this.setPlayer(player);
+        });
     });
   }
 
-  ngOnDestroy() {
-    this.playerSubscription.unsubscribe();
-
-    this.primus.killSocket();
-  }
 }

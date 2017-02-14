@@ -11,15 +11,15 @@
     <div class="card pet-card">
       <div class="card-block">
         <h4 class="card-title">
-          {{ player.allPets[pet].name }}
-          <button class="pull-xs-right btn btn-sm btn-outline-primary" *ngIf="activePetId === pet" [routerLink]="['/pets', player.allPets[pet].owner]">
+          {{ player.earnedPetData[pet].name }}
+          <button class="pull-xs-right btn btn-sm btn-outline-primary" *ngIf="activePetId === pet" [routerLink]="['/pets', player.earnedPetData[pet].owner]">
             <i fa icon="arrow-right"></i>
           </button>
         </h4>
         <p class="card-text">
-          Level {{ player.allPets[pet]._level.__current }} {{ player.allPets[pet].professionName }} {{ pet }}<br>
+          Level {{ player.earnedPetData[pet]._level.__current }} {{ player.earnedPetData[pet].professionName }} {{ pet }}<br>
         </p>
-        <p>with {{ player.allPets[pet].attr }}</p>
+        <p>with {{ player.earnedPetData[pet].attr }}</p>
       </div>
     </div>
   </div>

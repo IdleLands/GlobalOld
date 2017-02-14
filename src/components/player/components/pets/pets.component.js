@@ -14,7 +14,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 })
 export class PetsComponent {
   ngOnInit() {
-    this.pets = _.sortBy(_.keys(this.player.allPets));
+    this.pets = _.sortBy(_.keys(this.player.earnedPetData));
     this.activePetId = this.player.activePetId;
   }
 }

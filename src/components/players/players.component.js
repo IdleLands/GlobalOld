@@ -74,7 +74,6 @@ export class PlayersComponent {
   ngOnInit() {
     this.playerService.getAllPlayers()
       .subscribe(data => {
-        console.log(data);
         this.setAllPlayers(data);
       });
   }

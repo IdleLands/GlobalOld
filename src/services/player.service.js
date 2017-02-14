@@ -19,4 +19,9 @@ export class PlayerService {
     return this.http.get(`${BaseURL.url}/players`)
       .map(res => res.json().players);
   }
+
+  getPlayer(playerId) {
+    return this.http.get(`${BaseURL.url}/players/${playerId}`)
+      .map(res => res.json().player);
+  }
 }
