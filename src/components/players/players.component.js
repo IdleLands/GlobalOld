@@ -6,20 +6,20 @@ import template from './players.html';
 import './players.less';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { PrimusWrapper } from '../../services/primus';
+import { PlayerService } from '../../services/player.service';
 
 @Component({
   directives: [ROUTER_DIRECTIVES],
-  providers: [PrimusWrapper],
+  providers: [PlayerService],
   template
 })
 export class PlayersComponent {
   static get parameters() {
-    return [[PrimusWrapper]];
+    return [[PlayerService]];
   }
 
-  constructor(primus) {
-    this.primus = primus;
+  constructor(playerService) {
+    this.playerService = playerService;
     this.allPlayers = [];
     this.userSort = 'name';
     this.userFilter = undefined;
@@ -27,7 +27,8 @@ export class PlayersComponent {
     this.userReverse = false;
     this.filterKeys = [
       { name: 'Name',       value: 'name' },
-      { name: 'Level',      value: 'level' },
+      { name: 'Ascension',  value: 'ascensionLevel' },
+      { name: 'Level',      value: '_level.__current' },
       { name: 'Profession', value: 'professionName' },
       { name: 'Map',        value: 'map' }
     ];
@@ -61,7 +62,7 @@ export class PlayersComponent {
         return _.includes((''+player[this.userFilter]).toLowerCase(), this.userFilterCriteria.toLowerCase());
       })
       .sortBy(player => {
-        return _.isNumber(player[this.userSort]) ? player[this.userSort] : player[this.userSort].toLowerCase();
+        return _.isNumber(_.get(player, this.userSort)) ? _.get(player, this.userSort) : _.get(player, this.userSort).toLowerCase();
       })
       .value();
 
@@ -71,15 +72,11 @@ export class PlayersComponent {
   }
 
   ngOnInit() {
-    this.playerSubscription = this.primus.contentUpdates.onlineUsers.subscribe(data => this.setAllPlayers(data));
-
-    this.primus.initSocket();
-    this.primus.requestGlobalPlayers();
+    this.playerService.getAllPlayers()
+      .subscribe(data => {
+        console.log(data);
+        this.setAllPlayers(data);
+      });
   }
 
-  ngOnDestroy() {
-    this.playerSubscription.unsubscribe();
-
-    this.primus.killSocket();
-  }
 }
