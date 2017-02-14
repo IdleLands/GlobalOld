@@ -54,7 +54,6 @@ export class PlayerComponent {
     this.route.params.subscribe(params => {
       this.playerService.getPlayer(decodeURI(params.name))
         .subscribe(player => {
-          console.log(player);
           this.setPlayer(player);
         });
     });

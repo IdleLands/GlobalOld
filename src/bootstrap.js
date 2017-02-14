@@ -2,6 +2,9 @@
 import 'reflect-metadata';
 import 'zone.js/dist/zone';
 
+import { DomSanitizationService } from '@angular/platform-browser';
+import { CustomDomSanitizer } from './services/domsanitizer.override';
+
 // require the favicons
 require.context('../favicon', true, /^\.\//);
 
@@ -26,6 +29,7 @@ if(window.location.hostname !== 'localhost') enableProdMode();
 bootstrap(App, [
   HTTP_PROVIDERS,
   APP_ROUTER_PROVIDERS,
+  { provide: DomSanitizationService, useClass: CustomDomSanitizer },
   // { provide: LocationStrategy, useClass: HashLocationStrategy },
   provide(PLATFORM_DIRECTIVES, { useValue: TOOLTIP_DIRECTIVES, multi: true }),
   provide(PLATFORM_DIRECTIVES, { useValue: FontAwesomeDirective, multi: true }),

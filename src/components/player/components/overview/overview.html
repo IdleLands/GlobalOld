@@ -1,14 +1,15 @@
 <div class="row">
   <div class="col-md-12">
 
-    <div class="card">
+    <div class="card" [style.background]="backgroundForPlayer()">
       <div class="card-block text-md-center">
         <h4 class="card-title">
           {{ player.nameEdit || player.name }}<span *ngIf="player.title">, the {{ player.title }}</span>
         </h4>
 
-        <p>Level {{ player._level.__current }} {{ player.gender }} {{ player.professionName }} currently located in {{ player.map }} ({{ player.mapRegion }})</p>
-        <p>Has {{ player.gold }} gold</p>
+        <p>Level <span *ngIf="player.ascensionLevel > 0">{{ player.ascensionLevel }}<i fa icon="star"></i></span>{{ player._level.__current }} {{ player.gender }} {{ player.professionName }} currently located in {{ player.map }} ({{ player.mapRegion }})</p>
+        <p>Has {{ player.gold.toLocaleString() }} gold</p>
+        <p>XP: {{ player._xp.__current.toLocaleString() }}/{{ player._xp.maximum.toLocaleString() }}</p>
         <p>Joined {{ player.joinDate | date:'medium' }}</p>
       </div>
     </div>
@@ -27,7 +28,7 @@
           HP
         </h4>
 
-        <p>{{ player._hp.maximum }}</p>
+        <p>{{ player._hp.maximum.toLocaleString() }}</p>
       </div>
     </div>
 
@@ -40,7 +41,7 @@
           MP
         </h4>
 
-        <p>{{ player._mp.maximum }}</p>
+        <p>{{ player._mp.maximum.toLocaleString() }}</p>
       </div>
     </div>
 
@@ -58,7 +59,7 @@
           {{ stat.toUpperCase() }}
         </h4>
 
-        <p>{{ player.statCache[stat] }}</p>
+        <p>{{ player.statCache[stat].toLocaleString() }}</p>
       </div>
     </div>
 
