@@ -2,6 +2,7 @@
 import _ from 'lodash';
 
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import template from './players.html';
 import './players.less';
 import { ROUTER_DIRECTIVES } from '@angular/router';
@@ -72,8 +73,10 @@ export class PlayersComponent {
   }
 
   ngOnInit() {
-    this.playerService.getAllPlayers()
-      .subscribe(data => {
+    Observable.timer(0, 5000)
+      .flatMap(() => {
+        return this.playerService.getAllPlayers()
+      }).subscribe(data => {
         this.setAllPlayers(data);
       });
   }

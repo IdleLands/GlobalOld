@@ -2,6 +2,7 @@
 // import _ from 'lodash';
 
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import template from './player.html';
 import './player.less';
 import { ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
@@ -52,10 +53,12 @@ export class PlayerComponent {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.playerService.getPlayer(decodeURI(params.name))
-        .subscribe(player => {
-          this.setPlayer(player);
-        });
+      Observable.timer(0, 5000)
+        .flatMap(() => {
+          return this.playerService.getPlayer(decodeURI(params.name))
+        }).subscribe(player => {
+        this.setPlayer(player);
+      });
     });
   }
 
