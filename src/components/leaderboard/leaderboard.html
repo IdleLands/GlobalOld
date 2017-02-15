@@ -1,0 +1,32 @@
+
+<div class="container-fluid leaderboard-container">
+  <div class="row leaderboard">
+    <div class="col-md-12" *ngIf="leaderboard">
+      <div class="col-md-4 col-sm-6 col-xs-12" *ngFor="let card of cardOrder">
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title">
+              {{ card.name }}
+            </h4>
+            <div class="card-text">
+              <table class="table">
+                <tr>
+                  <td><strong>{{ leaderboard[card.key][0]._id }}</strong></td>
+                  <td><strong>{{ card.format(leaderboard[card.key][0][card.dataKey]) }}</strong></td>
+                </tr>
+                <tr>
+                  <td>{{ leaderboard[card.key][1]?._id || '???' }}</td>
+                  <td>{{ leaderboard[card.key][1] ? card.format(leaderboard[card.key][1][card.dataKey]) : '' }}</td>
+                </tr>
+                <tr>
+                  <td>{{ leaderboard[card.key][2]?._id || '???' }}</td>
+                  <td>{{ leaderboard[card.key][2] ? card.format(leaderboard[card.key][2][card.dataKey]) : '' }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import { PlayerComponent } from './player/player.component';
 import { PetsComponent } from './pets/pets.component';
 import { PetComponent } from './pet/pet.component';
 import { MapsComponent } from './maps/maps.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 export const routes = [
   { path: '',                 redirectTo: 'players', pathMatch: 'full' },
@@ -12,7 +13,8 @@ export const routes = [
   { path: 'players/:name',    component: PlayerComponent },
   { path: 'pets',             component: PetsComponent },
   { path: 'pets/:name',       component: PetComponent },
-  { path: 'maps',             component: MapsComponent }
+  { path: 'maps',             component: MapsComponent },
+  { path: 'leaderboard',      component: LeaderboardComponent }
 ];
 
 export const APP_ROUTER_PROVIDERS = [
