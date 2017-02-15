@@ -55,10 +55,10 @@ export class PlayerComponent {
     this.route.params.subscribe(params => {
       Observable.timer(0, 5000)
         .flatMap(() => {
-          return this.playerService.getPlayer(decodeURI(params.name))
+          return this.playerService.getPlayer(decodeURI(params.name));
         }).subscribe(player => {
-        this.setPlayer(player);
-      });
+          this.setPlayer(player);
+        });
     });
   }
 
