@@ -27,10 +27,10 @@ export class LeaderboardComponent {
       { name: 'Richest',              key: 'goldLeaders',           dataKey: 'gold',                format: (data) => `${data.toLocaleString()} Gold` },
       { name: 'Well-traveled',        key: 'stepLeaders',           dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` },
       { name: 'Gladiatorial',         key: 'combatWinLeaders',      dataKey: 'combatWin',           format: (data) => `${data.toLocaleString()} Battles Won` },
+      { name: 'Damaging',             key: 'damageLeaders',         dataKey: 'damage',              format: (data) => `${data.toLocaleString()} Damage Dealt` },
       { name: 'Eventful',             key: 'eventLeaders',          dataKey: 'events',              format: (data) => `${data.toLocaleString()} Events` },
       { name: 'Lone Wolf',            key: 'soloLeaders',           dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` },
-      { name: 'Best Luck',            key: 'goodLuckLeaders',       dataKey: 'luk',                 format: (data) => `${data.toLocaleString()} LUK` },
-      { name: 'Worst Luck',           key: 'badLuckLeaders',        dataKey: 'luk',                 format: (data) => `${data.toLocaleString()} LUK` }
+      { name: 'Best Luck',            key: 'goodLuckLeaders',       dataKey: 'luk',                 format: (data) => `${data.toLocaleString()} LUK` }
     ];
   }
 
