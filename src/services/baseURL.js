@@ -9,4 +9,12 @@ export class BaseURL {
 
     return url;
   }
+
+  static get idleUrl() {
+
+    let url = 'http://localhost:8080';
+    if(_.includes(window.location.href, 'idle.land')) url = 'http://game.idle.land';
+
+    return url;
+  }
 }

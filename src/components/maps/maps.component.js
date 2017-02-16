@@ -7,22 +7,22 @@ import './maps.less';
 
 import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 
-import { PrimusWrapper } from '../../services/primus';
+import { MapsService } from '../../services/maps.service';
 
 import { PannableMap } from './pannable-map';
 
 @Component({
   directives: [ROUTER_DIRECTIVES, PannableMap],
-  providers: [PrimusWrapper],
+  providers: [MapsService],
   template
 })
 export class MapsComponent {
   static get parameters() {
-    return [[PrimusWrapper], [Router]];
+    return [[MapsService], [Router]];
   }
 
-  constructor(primus, router) {
-    this.primus = primus;
+  constructor(mapService, router) {
+    this.mapService = mapService;
     this.router = router;
     this.allMaps = [];
     this._current = {};
@@ -63,7 +63,6 @@ export class MapsComponent {
   }
 
   ngOnInit() {
-    this.mapSubscription = this.primus.contentUpdates.maps.subscribe(data => this.setAllMaps(data));
     const { x, y, map } = this.router.routerState.snapshot.queryParams;
 
     this.default = {
@@ -76,13 +75,9 @@ export class MapsComponent {
     if(_.isNaN(this.default.y))                               this.default.y = 0;
     if(!this.default.map || this.default.map === 'undefined') this.default.map = 'Norkos';
 
-    this.primus.initSocket();
-    this.primus.requestGlobalMaps();
-  }
-
-  ngOnDestroy() {
-    this.mapSubscription.unsubscribe();
-
-    this.primus.killSocket();
+    this.mapService.getAllMaps()
+      .subscribe(data => {
+        this.setAllMaps(data);
+      });
   }
 }
