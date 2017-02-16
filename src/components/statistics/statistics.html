@@ -1,0 +1,133 @@
+
+<div class="container-fluid statistics-container">
+  <div class="row statistics" *ngIf="statistics">
+    <div class="col-md-4">
+
+      <div class="card">
+        <div class="card-block text-md-center">
+          <h4 class="card-title">
+            Class Distribution
+          </h4>
+
+          <base-chart class="chart"
+                      *ngIf="professionData"
+                      chartType="pie"
+                      legend="true"
+                      [labels]="professionData.labels"
+                      [data]="professionData.data"></base-chart>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-4">
+
+      <div class="card">
+        <div class="card-block text-md-center">
+          <h4 class="card-title">
+            Active Pet Distribution
+          </h4>
+
+          <base-chart class="chart"
+                      *ngIf="petData"
+                      chartType="pie"
+                      legend="true"
+                      [labels]="petData.labels"
+                      [data]="petData.data"></base-chart>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-4">
+
+      <div class="card">
+        <div class="card-block text-md-center">
+          <h4 class="card-title">
+            Active Player Maps
+          </h4>
+
+          <base-chart class="chart"
+                      *ngIf="mapData"
+                      chartType="pie"
+                      legend="true"
+                      [labels]="mapData.labels"
+                      [data]="mapData.data"></base-chart>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row" *ngIf="statistics">
+
+    <div class="col-md-3 offset-md-3">
+      <div class="card">
+        <div class="card-block text-md-center">
+          <h4 class="card-title">
+            Total Players
+          </h4>
+          <p>{{ statistics.playerCount |number }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-block text-md-center">
+          <h4 class="card-title">
+            Online Players
+          </h4>
+          <p>{{ statistics.playerOnlineCount | number }}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row" *ngIf="statistics">
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-block text-md-center">
+          <h4 class="card-title">
+            Total Events
+          </h4>
+          <p>{{ statistics.events | number }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-block text-md-center">
+          <h4 class="card-title">
+            Total Steps
+          </h4>
+          <p>{{ statistics.steps | number }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-block text-md-center">
+          <h4 class="card-title">
+            Total Damage Dealt
+          </h4>
+          <p>{{ statistics.damage | number }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-block text-md-center">
+          <h4 class="card-title">
+            Total Gold Owned
+          </h4>
+          <p>{{ statistics.gold | number }}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
