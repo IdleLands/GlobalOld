@@ -4,7 +4,7 @@
     <div class="card" [style.background]="backgroundForPlayer()">
       <div class="card-block text-md-center">
         <h4 class="card-title">
-          {{ player.nameEdit || player.name }}<span *ngIf="player.title">, the {{ player.title }}</span>
+          {{ player.nameEdit || player.name }}<span *ngIf="player.title">, the {{ player.title }}</span> <span *ngIf="player.hasDonated" tooltip="Donator!" tooltipPlacement="bottom"><i fa icon="star"></i><i fa icon="star"></i><i fa icon="star"></i></span>
         </h4>
 
         <p>Level <span *ngIf="player.ascensionLevel > 0">{{ player.ascensionLevel }}<i fa icon="star"></i></span>{{ player._level.__current }} {{ player.gender }} {{ player.professionName }} currently located in {{ player.map }} ({{ player.mapRegion }})</p>
