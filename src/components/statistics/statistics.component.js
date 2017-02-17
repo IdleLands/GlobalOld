@@ -48,7 +48,7 @@ export class StatisticsComponent {
   }
 
   _mapData() {
-    const countMaps = _(this.statistics.maps).sortBy('count').take(10).value();
+    const countMaps = _(this.statistics.maps).sortBy('count').reverse().take(10).value();
     const labels = _.map(countMaps, '_id');
     const data   = _.map(countMaps, 'count');
 
