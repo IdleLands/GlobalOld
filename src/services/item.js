@@ -28,7 +28,7 @@ export class ItemService {
 
     return _(newItem)
       .keys()
-      .map(key => `${key}(${newItem[key]})`)
+      .map(key => `${key}(${newItem[key].toLocaleString()})`)
       .join(' ');
   }
 }

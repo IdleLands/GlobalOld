@@ -2,27 +2,28 @@
 import _ from 'lodash';
 
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import template from './pet.html';
 import './pet.less';
 import { ROUTER_DIRECTIVES, ActivatedRoute } from '@angular/router';
 
-import { PrimusWrapper } from '../../services/primus';
+import { PetService } from '../../services/pet.service';
 
 import { OverviewComponent } from './components/overview/overview.component';
 import { EquipmentComponent } from './components/equipment/equipment.component';
 
 @Component({
   directives: [ROUTER_DIRECTIVES, OverviewComponent, EquipmentComponent],
-  providers: [PrimusWrapper],
+  providers: [PetService],
   template
 })
 export class PetComponent {
   static get parameters() {
-    return [[PrimusWrapper], [ActivatedRoute]];
+    return [[PetService], [ActivatedRoute]];
   }
 
-  constructor(primus, route) {
-    this.primus = primus;
+  constructor(petService, route) {
+    this.petService = petService;
     this.route = route;
     this.player = {};
 
@@ -44,17 +45,13 @@ export class PetComponent {
   }
 
   ngOnInit() {
-    this.playerSubscription = this.primus.contentUpdates.pet.subscribe(data => this.setPlayer(data));
-
     this.route.params.subscribe(params => {
-      this.primus.initSocket();
-      this.primus.requestPet(decodeURI(params.name));
+      Observable.timer(0, 5000)
+        .flatMap(() => {
+          return this.petService.getPet(decodeURI(params.name));
+        }).subscribe(data => {
+          this.setPlayer(data);
+        });
     });
-  }
-
-  ngOnDestroy() {
-    this.playerSubscription.unsubscribe();
-
-    this.primus.killSocket();
   }
 }

@@ -9,7 +9,7 @@
 
         <p>Level {{ player._level.__current }} {{ player.gender }} {{ player.professionName }} with {{ player.attr }}</p>
         <p>Owned by {{ player.ownerEdit || player.owner }}</p>
-        <p>Has {{ player.gold.__current }} gold</p>
+        <p>Has {{ player.gold.__current | number }} gold</p>
         <p>Adopted {{ player.createdAt | date:'medium' }}</p>
       </div>
     </div>
@@ -28,7 +28,7 @@
           HP
         </h4>
 
-        <p>{{ player._hp.maximum }}</p>
+        <p>{{ player._hp.maximum | number }}</p>
       </div>
     </div>
 
@@ -41,7 +41,7 @@
           MP
         </h4>
 
-        <p>{{ player._mp.maximum }}</p>
+        <p>{{ player._mp.maximum | number }}</p>
       </div>
     </div>
 
@@ -59,7 +59,7 @@
           {{ stat.toUpperCase() }}
         </h4>
 
-        <p>{{ player.statCache[stat] }}</p>
+        <p>{{ player.statCache[stat] | number }}</p>
       </div>
     </div>
 

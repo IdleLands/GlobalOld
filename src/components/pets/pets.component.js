@@ -2,24 +2,25 @@
 import _ from 'lodash';
 
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import template from './pets.html';
 import './pets.less';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { PrimusWrapper } from '../../services/primus';
+import { PetService } from '../../services/pet.service';
 
 @Component({
   directives: [ROUTER_DIRECTIVES],
-  providers: [PrimusWrapper],
+  providers: [PetService],
   template
 })
 export class PetsComponent {
   static get parameters() {
-    return [[PrimusWrapper]];
+    return [[PetService]];
   }
 
-  constructor(primus) {
-    this.primus = primus;
+  constructor(petService) {
+    this.petService = petService;
     this.allPlayers = [];
     this.userSort = 'name';
     this.userFilter = undefined;
@@ -29,7 +30,6 @@ export class PetsComponent {
       { name: 'Name',       value: 'name' },
       { name: 'Level',      value: 'level' },
       { name: 'Profession', value: 'professionName' },
-      { name: 'Map',        value: 'map' },
       { name: 'Owner',      value: 'owner' },
       { name: 'Type',       value: 'type' }
     ];
@@ -73,15 +73,11 @@ export class PetsComponent {
   }
 
   ngOnInit() {
-    this.playerSubscription = this.primus.contentUpdates.pets.subscribe(data => this.setAllPlayers(data));
-
-    this.primus.initSocket();
-    this.primus.requestGlobalPets();
-  }
-
-  ngOnDestroy() {
-    this.playerSubscription.unsubscribe();
-
-    this.primus.killSocket();
+    Observable.timer(0, 5000)
+      .flatMap(() => {
+        return this.petService.getAllPets();
+      }).subscribe(data => {
+        this.setAllPlayers(data);
+      });
   }
 }
