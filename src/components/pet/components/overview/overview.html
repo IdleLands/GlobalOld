@@ -7,7 +7,7 @@
           {{ player.name }}
         </h4>
 
-        <p>Level {{ player._level.__current }} {{ player.gender }} {{ player.professionName }} with {{ player.attr }}</p>
+        <p>Level {{ player._level?.__current }} {{ player.gender }} {{ player.professionName }} with {{ player.attr }}</p>
         <p>Owned by {{ player.ownerEdit || player.owner }}</p>
         <p>Has {{ player.gold.__current | number }} gold</p>
         <p>Adopted {{ player.createdAt | date:'medium' }}</p>
