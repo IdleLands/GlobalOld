@@ -25,12 +25,15 @@ export class LeaderboardComponent {
       { name: 'Most Achievements',    key: 'achievementLeaders',    dataKey: 'uniqueAchievements',  format: (data) => `${data} Achievements` },
       { name: 'Most Titles',          key: 'titleLeaders',          dataKey: 'totalTitles',         format: (data) => `${data} Titles` },
       { name: 'Richest',              key: 'goldLeaders',           dataKey: 'gold',                format: (data) => `${data.toLocaleString()} Gold` },
-      { name: 'Well-traveled',        key: 'stepLeaders',           dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` },
+      { name: 'Eventful',             key: 'eventLeaders',          dataKey: 'events',              format: (data) => `${data.toLocaleString()} Events` },
+      { name: 'Best Luck',            key: 'goodLuckLeaders',       dataKey: 'luk',                 format: (data) => `${data.toLocaleString()} LUK` },
       { name: 'Gladiatorial',         key: 'combatWinLeaders',      dataKey: 'combatWin',           format: (data) => `${data.toLocaleString()} Battles Won` },
       { name: 'Damaging',             key: 'damageLeaders',         dataKey: 'damage',              format: (data) => `${data.toLocaleString()} Damage` },
-      { name: 'Eventful',             key: 'eventLeaders',          dataKey: 'events',              format: (data) => `${data.toLocaleString()} Events` },
+      { name: 'Overkiller',           key: 'overkillLeaders',       dataKey: 'damage',              format: (data) => `${data.toLocaleString()} Damage` },
+      { name: 'Spongiest',            key: 'takenDamageLeaders',    dataKey: 'damage',              format: (data) => `${data.toLocaleString()} Damage` },
+      { name: 'Well-traveled',        key: 'stepLeaders',           dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` },
       { name: 'Lone Wolf',            key: 'soloLeaders',           dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` },
-      { name: 'Best Luck',            key: 'goodLuckLeaders',       dataKey: 'luk',                 format: (data) => `${data.toLocaleString()} LUK` }
+      { name: 'Lush Wolf',            key: 'drunkLeaders',          dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` }
     ];
   }
 
