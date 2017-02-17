@@ -20,7 +20,7 @@ export class LeaderboardComponent {
     this.leaderboardService = leaderboardService;
     this.cardOrder = [
       { name: 'Most Levels',          key: 'levelLeaders',          dataKey: 'level',               format: (data) => `Level ${data.toLocaleString()}` },
-      { name: 'Most Fateful',         key: 'fateLeaders',           dataKey: 'fates',               format: (data) => `${data} Providences` },
+      { name: 'Most Fateful',         key: 'fateLeaders',           dataKey: 'fates',               format: (data) => `${data.toLocaleString()} Providences` },
       { name: 'Most Collectibles',    key: 'collectibleLeaders',    dataKey: 'uniqueCollectibles',  format: (data) => `${data} Collectibles` },
       { name: 'Most Achievements',    key: 'achievementLeaders',    dataKey: 'uniqueAchievements',  format: (data) => `${data} Achievements` },
       { name: 'Most Titles',          key: 'titleLeaders',          dataKey: 'totalTitles',         format: (data) => `${data} Titles` },
