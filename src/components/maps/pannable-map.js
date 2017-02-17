@@ -7,9 +7,9 @@ window.PIXI = require('pixi.js');
 window.p2 = require('p2');
 window.Phaser = require('phaser');
 
-import { settings } from '../../services/primus';
+import { BaseURL } from '../../services/baseURL';
 
-const baseUrl = `${settings.protocol}://${settings.cdn ? settings.cdn : settings.hostname}:${settings.port}`;
+const baseUrl = BaseURL.idleUrl;
 
 class Game {
 
