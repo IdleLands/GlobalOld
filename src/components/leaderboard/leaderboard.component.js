@@ -19,7 +19,7 @@ export class LeaderboardComponent {
   constructor(leaderboardService) {
     this.leaderboardService = leaderboardService;
     this.cardOrder = [
-      { name: 'Highest Level',        key: 'levelLeaders',          dataKey: 'level',               format: (data) => `Level ${data.toLocaleString()}` },
+      { name: 'Most Levels',          key: 'levelLeaders',          dataKey: 'level',               format: (data) => `Level ${data.toLocaleString()}` },
       { name: 'Highest Ascension',    key: 'ascensionLeaders',      dataKey: 'ascension',           format: (data) => `Ascension ${data}` },
       { name: 'Most Collectibles',    key: 'collectibleLeaders',    dataKey: 'uniqueCollectibles',  format: (data) => `${data} Collectibles` },
       { name: 'Most Achievements',    key: 'achievementLeaders',    dataKey: 'uniqueAchievements',  format: (data) => `${data} Achievements` },
@@ -27,7 +27,7 @@ export class LeaderboardComponent {
       { name: 'Richest',              key: 'goldLeaders',           dataKey: 'gold',                format: (data) => `${data.toLocaleString()} Gold` },
       { name: 'Well-traveled',        key: 'stepLeaders',           dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` },
       { name: 'Gladiatorial',         key: 'combatWinLeaders',      dataKey: 'combatWin',           format: (data) => `${data.toLocaleString()} Battles Won` },
-      { name: 'Damaging',             key: 'damageLeaders',         dataKey: 'damage',              format: (data) => `${data.toLocaleString()} Damage Dealt` },
+      { name: 'Damaging',             key: 'damageLeaders',         dataKey: 'damage',              format: (data) => `${data.toLocaleString()} Damage` },
       { name: 'Eventful',             key: 'eventLeaders',          dataKey: 'events',              format: (data) => `${data.toLocaleString()} Events` },
       { name: 'Lone Wolf',            key: 'soloLeaders',           dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` },
       { name: 'Best Luck',            key: 'goodLuckLeaders',       dataKey: 'luk',                 format: (data) => `${data.toLocaleString()} LUK` }
