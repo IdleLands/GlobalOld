@@ -63,7 +63,7 @@
                 </a>
               </h4>
               <p class="card-text">
-                Level <span *ngIf="player.ascensionLevel > 0">{{ player.ascensionLevel }}<i fa icon="star"></i></span>{{ player._level.__current }} {{ player.professionName }}<br>
+                Level <span *ngIf="player.ascensionLevel > 0">{{ player.ascensionLevel }}<i fa icon="star"></i></span>{{ player._level?.__current }} {{ player.professionName }}<br>
                 Currently in {{ player.map }}
               </p>
             </div>
