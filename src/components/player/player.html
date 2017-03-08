@@ -1,13 +1,13 @@
 
 <div class="container-fluid player-container">
 
-  <div class="row" *ngIf="!player.overview">
+  <div class="row" *ngIf="!player.overview || !player.overview.name">
     <div class="col-md-12 empty-text text-md-center text-muted">
-      <h3>Player not online.</h3>
+      <h3>Player does not exist.</h3>
     </div>
   </div>
 
-  <div class="row" *ngIf="player.overview">
+  <div class="row" *ngIf="player.overview && player.overview.name">
     <div class="col-md-2 sidebar">
       <ul class="nav nav-pills nav-stacked">
         <li class="nav-item" *ngFor="let nav of navItems">
