@@ -22,6 +22,14 @@
                   <td>{{ leaderboard[card.key][2]?._id || '???' }}</td>
                   <td>{{ leaderboard[card.key][2] ? card.format(leaderboard[card.key][2][card.dataKey]) : '' }}</td>
                 </tr>
+                <tr>
+                  <td>{{ leaderboard[card.key][3]?._id || '???' }}</td>
+                  <td>{{ leaderboard[card.key][3] ? card.format(leaderboard[card.key][3][card.dataKey]) : '' }}</td>
+                </tr>
+                <tr>
+                  <td>{{ leaderboard[card.key][4]?._id || '???' }}</td>
+                  <td>{{ leaderboard[card.key][4] ? card.format(leaderboard[card.key][4][card.dataKey]) : '' }}</td>
+                </tr>
               </table>
             </div>
           </div>
