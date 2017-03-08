@@ -31,9 +31,15 @@ export class LeaderboardComponent {
       { name: 'Damaging',             key: 'damageLeaders',         dataKey: 'damage',              format: (data) => `${data.toLocaleString()} Damage` },
       { name: 'Overkiller',           key: 'overkillLeaders',       dataKey: 'damage',              format: (data) => `${data.toLocaleString()} Damage` },
       { name: 'Spongiest',            key: 'takenDamageLeaders',    dataKey: 'damage',              format: (data) => `${data.toLocaleString()} Damage` },
+      { name: 'Monster Slayer',       key: 'monsterLeaders',        dataKey: 'kills',               format: (data) => `${data.toLocaleString()} Kills` },
+      { name: 'Player Slayer',        key: 'playerLeaders',         dataKey: 'kills',               format: (data) => `${data.toLocaleString()} Kills` },
       { name: 'Well-traveled',        key: 'stepLeaders',           dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` },
       { name: 'Lone Wolf',            key: 'soloLeaders',           dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` },
-      { name: 'Lush Wolf',            key: 'drunkLeaders',          dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` }
+      { name: 'Lush Wolf',            key: 'drunkLeaders',          dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` },
+      { name: 'Camping Wolf',         key: 'campingLeaders',        dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` },
+      { name: 'Party Wolf',           key: 'partyLeaders',          dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` },
+      { name: 'Astral Walker',        key: 'astralLeaders',         dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` },
+      { name: 'Acid Walker',          key: 'acidLeaders',           dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` }
     ];
   }
 

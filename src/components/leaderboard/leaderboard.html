@@ -11,8 +11,8 @@
             <div class="card-text">
               <table class="table">
                 <tr>
-                  <td><strong>{{ leaderboard[card.key][0]._id }}</strong></td>
-                  <td><strong>{{ card.format(leaderboard[card.key][0][card.dataKey]) }}</strong></td>
+                  <td><strong>{{ leaderboard[card.key][0]?._id || '???' }}</strong></td>
+                  <td><strong>{{ leaderboard[card.key][0] ? card.format(leaderboard[card.key][0][card.dataKey]) : '' }}</strong></td>
                 </tr>
                 <tr>
                   <td>{{ leaderboard[card.key][1]?._id || '???' }}</td>
