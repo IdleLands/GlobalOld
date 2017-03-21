@@ -73,7 +73,7 @@ export class PlayersComponent {
   }
 
   ngOnInit() {
-    Observable.timer(0, 5000)
+    Observable.timer(0, 30000)
       .flatMap(() => {
         return this.playerService.getAllPlayers();
       }).subscribe(data => {

@@ -73,7 +73,7 @@ export class PetsComponent {
   }
 
   ngOnInit() {
-    Observable.timer(0, 5000)
+    Observable.timer(0, 30000)
       .flatMap(() => {
         return this.petService.getAllPets();
       }).subscribe(data => {

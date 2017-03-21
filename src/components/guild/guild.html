@@ -1,0 +1,25 @@
+
+<div class="container-fluid guild-container">
+
+  <div class="row" *ngIf="!guild.name">
+    <div class="col-md-12 empty-text text-md-center text-muted">
+      <h3>Guild not available.</h3>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="guild.name">
+    <div class="col-md-2 sidebar">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="nav-item" *ngFor="let nav of navItems">
+          <a class="nav-link" [class.active]="nav.value === activeNav" (click)="changeNav(nav.value)">{{ nav.name }}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-10 offset-md-2">
+      <overview     *ngIf="activeNav === 'overview'"      [guild]="guild"></overview>
+      <members      *ngIf="activeNav === 'members'"       [members]="guild.members"></members>
+    </div>
+  </div>
+
+</div>

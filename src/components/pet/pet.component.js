@@ -46,7 +46,7 @@ export class PetComponent {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      Observable.timer(0, 5000)
+      Observable.timer(0, 30000)
         .flatMap(() => {
           return this.petService.getPet(decodeURI(params.name));
         }).subscribe(data => {

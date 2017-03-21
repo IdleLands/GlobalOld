@@ -44,7 +44,7 @@ export class LeaderboardComponent {
   }
 
   ngOnInit() {
-    Observable.timer(0, 5000)
+    Observable.timer(0, 10000)
       .flatMap(() => {
         return this.leaderboardService.getLeaderboard();
       }).subscribe(data => {

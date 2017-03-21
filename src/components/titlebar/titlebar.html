@@ -19,6 +19,12 @@
         </a>
       </li>
 
+      <li class="nav-item" [class.active]="hasActiveRoute('guilds')">
+        <a class="nav-link" [routerLink]="['/guilds']">
+          Guilds
+        </a>
+      </li>
+
       <li class="nav-item" [class.active]="hasActiveRoute('maps')">
         <a class="nav-link" [routerLink]="['/maps']">
           Maps

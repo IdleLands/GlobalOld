@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="card">
+      <div class="card-block text-md-center">
+        <h4 class="card-title">
+          {{ guild.name }} [{{ guild.tag }}]
+        </h4>
+
+        <p>Level {{ guild.level }}</p>
+        <p>Led by {{ guild.leader }}</p>
+        <p>Has {{ guild.members.length }}/{{ guild.maxMembers }} members</p>
+        <p>Taxes {{ guild.taxRate }}% gold</p>
+        <p>Formed {{ guild.founded | date:'medium' }}</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
