@@ -10,7 +10,7 @@
         <p>Level {{ guild.level }}</p>
         <p>Led by {{ guild.leader }}</p>
         <p>Has {{ guild.members.length }}/{{ guild.maxMembers }} members</p>
-        <p>Taxes {{ guild.taxRate }}% gold</p>
+        <p>Taxes {{ guild.taxRate }}% gold (has {{ guild.gold | number }} gold)</p>
         <p>Formed {{ guild.founded | date:'medium' }}</p>
       </div>
     </div>
