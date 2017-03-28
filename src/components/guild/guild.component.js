@@ -9,9 +9,10 @@ import { GuildService } from '../../services/guild.service';
 
 import { OverviewComponent } from './components/overview/overview.component';
 import { MembersComponent } from './components/members/members.component';
+import { BuildingsComponent } from './components/buildings/buildings.component';
 
 @Component({
-  directives: [ROUTER_DIRECTIVES, OverviewComponent, MembersComponent],
+  directives: [ROUTER_DIRECTIVES, OverviewComponent, MembersComponent, BuildingsComponent],
   providers: [GuildService],
   template
 })
@@ -27,7 +28,8 @@ export class GuildComponent {
 
     this.navItems = [
       { name: 'Overview',     value: 'overview' },
-      { name: 'Members',      value: 'members' }
+      { name: 'Members',      value: 'members' },
+      { name: 'Buildings',    value: 'buildings' }
     ];
 
     this.changeNav('overview');

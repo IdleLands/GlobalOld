@@ -19,6 +19,7 @@
     <div class="col-md-10 offset-md-2">
       <overview     *ngIf="activeNav === 'overview'"      [guild]="guild"></overview>
       <members      *ngIf="activeNav === 'members'"       [members]="guild.members"></members>
+      <buildings    *ngIf="activeNav === 'buildings'"     [buildings]="guild.buildings"></buildings>
     </div>
   </div>
 
