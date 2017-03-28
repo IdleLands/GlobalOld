@@ -2,15 +2,18 @@
 
   <div class="col-md-4 m-b-1" *ngFor="let member of members">
 
-    <div class="card">
+    <div class="member-card card">
       <div class="card-block text-md-center">
         <h4 class="card-title">
-          {{ member.name }}<span *ngIf="member.title">, the {{ member.title }}</span>
+          {{ member.name }}
+        </h4>
+        <h5 style="min-height: 23px"><span *ngIf="member.title">The {{ member.title }}</span></h5>
+        <h6>
           <span *ngIf="member.rank === 1">(Leader)</span>
           <span *ngIf="member.rank === 3">(Mod)</span>
           <span *ngIf="member.rank === 5">(Member)</span>
           <span *ngIf="member.unacceptedInvite">(Invited)</span>
-        </h4>
+        </h6>
 
         <p>Level <span *ngIf="member.ascensionLevel > 0">{{ member.ascensionLevel }}<i fa icon="star"></i></span>{{ member.level }} {{ member.profession }}</p>
         <p *ngIf="member.lastSeen === 0">Online</p>
