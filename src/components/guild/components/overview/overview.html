@@ -10,11 +10,87 @@
         <p>Level {{ guild.level }}</p>
         <p>Led by {{ guild.leader }}</p>
         <p>Has {{ guild.members.length }}/{{ guild.maxMembers }} members</p>
-        <p>Taxes {{ guild.taxRate }}% gold (has {{ guild.gold | number }} gold)</p>
+        <p>Taxes {{ guild.taxRate }}% gold</p>
         <p>Formed {{ guild.founded | date:'medium' }}</p>
       </div>
     </div>
 
   </div>
 
+</div>
+
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+
+    <div class="card">
+      <div class="card-block text-md-center">
+        <h4 class="card-title">
+          Gold
+        </h4>
+
+        <p>{{ guild.gold | number }}</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-4"></div>
+</div>
+
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-2">
+
+    <div class="card">
+      <div class="card-block text-md-center">
+        <h4 class="card-title">
+          Wood
+        </h4>
+
+        <p>{{ guild.resources.wood | number }}</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-2">
+
+    <div class="card">
+      <div class="card-block text-md-center">
+        <h4 class="card-title">
+          Clay
+        </h4>
+
+        <p>{{ guild.resources.clay | number }}</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-2">
+
+    <div class="card">
+      <div class="card-block text-md-center">
+        <h4 class="card-title">
+          Stone
+        </h4>
+
+        <p>{{ guild.resources.stone | number }}</p>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-2">
+
+    <div class="card">
+      <div class="card-block text-md-center">
+        <h4 class="card-title">
+          Astralium
+        </h4>
+
+        <p>{{ guild.resources.astralium | number }}</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-2"></div>
 </div>
