@@ -39,7 +39,10 @@ export class LeaderboardComponent {
       { name: 'Camping Wolf',         key: 'campingLeaders',        dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` },
       { name: 'Party Wolf',           key: 'partyLeaders',          dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` },
       { name: 'Astral Walker',        key: 'astralLeaders',         dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` },
-      { name: 'Acid Walker',          key: 'acidLeaders',           dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` }
+      { name: 'Acid Walker',          key: 'acidLeaders',           dataKey: 'steps',               format: (data) => `${data.toLocaleString()} Steps` },
+      { name: 'Ascended Earner',      key: 'ascGoldLeaders',        dataKey: 'ascend',              format: (data) => `${data.toLocaleString()} Gold` },
+      { name: 'Ascended Scorer',      key: 'ascItemLeaders',        dataKey: 'ascend',              format: (data) => `${data.toLocaleString()} ItemScore` },
+      { name: 'Ascended Collector',   key: 'ascCollLeaders',        dataKey: 'ascend',              format: (data) => `${data.toLocaleString()} Collectibles` }
     ];
   }
 
