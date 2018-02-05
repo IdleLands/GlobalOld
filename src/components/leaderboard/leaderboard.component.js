@@ -24,7 +24,7 @@ export class LeaderboardComponent {
       { name: 'Ascended Collector',   key: 'ascCollLeaders',        dataKey: 'ascend',              format: (data) => `${data.toLocaleString()} Collectibles` },
       { name: 'Most Levels',          key: 'levelLeaders',          dataKey: 'level',               format: (data) => `Level ${data.toLocaleString()}` },
       { name: 'Most Fateful',         key: 'fateLeaders',           dataKey: 'fates',               format: (data) => `${data.toLocaleString()} Providences` },
-      { name: 'Most Collectibles',    key: 'collectibleLeaders',    dataKey: 'uniqueCollectibles',  format: (data) => `${data} Collectibles` },
+      { name: 'Unique Collectibles',  key: 'collectibleLeaders',    dataKey: 'uniqueCollectibles',  format: (data) => `${data} Collectibles` },
       { name: 'Most Achievements',    key: 'achievementLeaders',    dataKey: 'uniqueAchievements',  format: (data) => `${data} Achievements` },
       { name: 'Most Titles',          key: 'titleLeaders',          dataKey: 'totalTitles',         format: (data) => `${data} Titles` },
       { name: 'Richest',              key: 'goldLeaders',           dataKey: 'gold',                format: (data) => `${data.toLocaleString()} Gold` },
